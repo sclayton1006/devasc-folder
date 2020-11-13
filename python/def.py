@@ -8,9 +8,9 @@ def subnet_binary(s):
     else:
         a = int(s)
         addresses = (2**(32-a))
-    
+
     return addresses
 
 s = input("Enter your slash notation. Use a number or a slash (/27 or 27): ")
-x = (subnet_binary(s))
+x = subnet_binary(s)
 print(x)
