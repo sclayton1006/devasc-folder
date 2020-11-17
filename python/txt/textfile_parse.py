@@ -1,7 +1,7 @@
 #Python3.8
 
 """ This small program opens the local textfile.txt and reads the contents
-The contants are printed to the screen when you run the print command"""
+The contents are printed to the screen when you run the print command"""
 
 readdata = open("textfile.txt", "r")  # Open the file in python, but open only
 print(readdata.read())                # Read the data of the file and print
@@ -34,3 +34,6 @@ print("Then we can add some more information onto the file with the 'a+' \
 argument\n\n")
 with open("textfile.txt") as data:
     print(data.read())
+
+# Further readin is required on the write command as the output appends onto the
+# same line in the text file.
