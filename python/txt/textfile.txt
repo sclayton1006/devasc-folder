@@ -1,0 +1,6 @@
+Line one of a text file
+Line two of a text file
+Line three of a text file
+Line 4
+5
+and 6
