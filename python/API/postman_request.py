@@ -7,6 +7,7 @@
 # First import requests
 import requests
 import time
+import json
 
 # Then define the URL using a string
 url = "https://postman-echo.com/get"
@@ -24,8 +25,11 @@ time.sleep(1)
 
 # Response will equal the HTTP get
 response = requests.request (method, url, headers=headers, params=querystring)
+print(response)
 # Which i think becomes:
 # GET https://postman-echo.com/get?test=123
+tidyJson = json.loads(str(response.text))
+
 if response != "":
     # A bit of ASCII art for kicks...
     print("                                \n\
@@ -34,7 +38,6 @@ if response != "":
     ||   ||    |    |---'`---.`---.        \n\
 `---'`---'`---'`---'`---'`---'`---'o       \n\
                                     ")
-    print(f"The {method} request was successful. The results are below:\n\n\
-{response.text}")
+    print(json.dumps(tidyJson, indent=4))
 else:
     print("API error. There is no data in the variable.")
