@@ -2,12 +2,15 @@
 #! usr/bin/env Python
 
 from dnacentersdk import api
+import os
+import csv
 
 # Create a DNA Center API connection object using the sandbox
 DNAC = api.DNACenterAPI(username="devnetuser",
            password="Cisco123!",
            base_url="https://sandboxdnac2.cisco.com")
 
+cwd = os.getcwd()
 # Find all devices
 DEVICES = DNAC.devices.get_device_list()
 
@@ -22,3 +25,12 @@ for device in DEVICES.response:
     "|", device.type, "|", device.upTime))
 
 print("-"*95)
+
+print("Saving a CSV to the current working directory, which is located at")
+print(cwd)
+
+with open('output1.csv', 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["Device Name", "Device Type", "Up Time"])
+    for device in DEVICES.response:
+        writer.writerow([device.hostname, device.type, device.upTime])
